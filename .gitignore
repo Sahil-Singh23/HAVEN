@@ -1,0 +1,51 @@
+### OS & Editor ###
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+### IDE ###
+.vscode/
+.idea/
+*.iml
+
+### Dependencies ###
+node_modules/
+bower_components/
+jspm_packages/
+.pnp
+.pnp.js
+
+### Build & Runtime ###
+dist/
+build/
+out/
+*.exe
+*.dll
+*.so
+*.dylib
+
+### Logs & Temp Files ###
+*.log
+*.tmp
+*.temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Environment ###
+.env
+.env.local
+.env*.local  # Exclude all local env files except .env.example
+
+### Testing & Coverage ###
+coverage/
+.nyc_output/
+*.lcov
+
+### Package Manager ###
+# Usually, you should commit lock files (Yarn, npm, etc.)
+# Uncomment only if your team agrees to ignore them
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
