@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
     <title>HAVEN</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <canvas></canvas>
-    <script src="data/collisions.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="classes.js"></script>
-    <script src="index.js"></script>
-</body>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Fixed path -->
+  </head>
+  <body>
+    <div id="game-container"></div>
+
+    <!-- Load scripts from CURRENT structure -->
+    <script src="../client/src/game/collisions.js"></script>
+    <script src="../client/src/utils.js"></script>
+    <script src="../client/src/entities/Player.js"></script>
+    <script src="../client/src/game/game.js"></script>
+  </body>
 </html>
