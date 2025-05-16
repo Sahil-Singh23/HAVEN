@@ -104,11 +104,11 @@ const assets = {
 };
 
 // Updated paths to match your structure
-assets.mainMap.src = "../assets/images/mainMap.png";
-assets.playerDown.src = "../assets/images/playerDown.png";
-assets.playerUp.src = "../assets/images/playerUp.png";
-assets.playerLeft.src = "../assets/images/playerLeft.png";
-assets.playerRight.src = "../assets/images/playerRight.png";
+assets.mainMap.src = "assets/images/mainMap.png";
+assets.playerDown.src = "assets/images/playerDown.png";
+assets.playerUp.src = "assets/images/playerUp.png";
+assets.playerLeft.src = "assets/images/playerLeft.png";
+assets.playerRight.src = "assets/images/playerRight.png";
 
 const player = new Sprite({
   position: {
