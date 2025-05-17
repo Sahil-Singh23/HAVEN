@@ -309,6 +309,80 @@ function animate() {
       });
     }
   }
+  const gameMessage = document.getElementById('gameMessage');
+    let activeGame = null;
+    let messageVisible = false;
+
+    const gamePortals = [
+        {
+            name: 'Memory Card Game',
+            position: { x: -363, y: -113 },
+            url: 'https://snehasingh-25.github.io/MemoryCardGame/'
+        },
+        {
+            name: 'Tic Tac Toe',
+            position: { x: -552, y: -113 },
+            url: 'https://snehasingh-25.github.io/Tic-Tac-Toe-/'
+        },
+        {
+            name: 'Solar System',
+            position: { x: 0, y: 240 },
+            url: 'https://snehasingh-25.github.io/SolarSystem/'
+        }
+        // Add more games easily here 
+    ];
+
+    function checkGamePortalTrigger() {
+        let matched = false;
+
+        for (const portal of gamePortals) {
+            const dx = Math.abs(background.position.x - portal.position.x);
+            const dy = Math.abs(background.position.y - portal.position.y);
+
+            if (dx < 10 && dy < 10) {
+                if (!messageVisible || activeGame !== portal.name) {
+                    activeGame = portal.name;
+                    messageVisible = true;
+
+                    gameMessage.innerText = `Press P to play the ${portal.name}!`;
+                    gameMessage.classList.remove('hidden');
+                    gameMessage.classList.add('show');
+
+                    setTimeout(() => {
+                        gameMessage.classList.remove('show');
+                        gameMessage.classList.add('hidden');
+                        messageVisible = false;
+                    }, 5000);
+                }
+                matched = true;
+                break;
+            }
+        }
+
+        if (!matched && messageVisible) {
+            messageVisible = false;
+            activeGame = null;
+            gameMessage.classList.remove('show');
+            gameMessage.classList.add('hidden');
+        }
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if ((e.key === 'p' || e.key === 'P') && messageVisible && activeGame) {
+            const game = gamePortals.find(g => g.name === activeGame);
+            if (game) {
+                window.open(game.url, '_blank');
+            }
+        }
+    });
+
+
+
+    if (keys.w.pressed || keys.a.pressed || keys.s.pressed || keys.d.pressed) {
+        console.log(`Map Offset → x: ${background.position.x}, y: ${background.position.y}`)
+
+    }
+    checkGamePortalTrigger();
 }
 
 let lastKey = "";
