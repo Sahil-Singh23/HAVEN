@@ -67,7 +67,7 @@ const c = canvas.getContext("2d");
 
 canvas.width = 1444;
 canvas.height = 1024;
-
+const socket = io();
 const collisionsMap = [];
 for (let i = 0; i < collisions.length; i += 64) {
   collisionsMap.push(collisions.slice(i, 64 + i));
