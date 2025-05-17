@@ -1,7 +1,8 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
+// Instead of directly accessing the canvas
 
-const DPR = window.devicePixelRatio || 1;
+//const DPR = window.devicePixelRatio || 1;
 
 // // CSS display size
 // const cssWidth = window.innerWidth;
@@ -208,7 +209,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y + 3,
+              y: boundary.position.y + 5,
             },
           },
         })
@@ -220,7 +221,7 @@ function animate() {
 
     if (moving) {
       movables.forEach((movable) => {
-        movable.position.y += 3;
+        movable.position.y += 5;
       });
     }
   } else if (keys.a.pressed && lastKey === "a") {
@@ -235,7 +236,7 @@ function animate() {
           rectangle2: {
             ...boundary,
             position: {
-              x: boundary.position.x + 3,
+              x: boundary.position.x + 5,
               y: boundary.position.y,
             },
           },
@@ -248,7 +249,7 @@ function animate() {
 
     if (moving) {
       movables.forEach((movable) => {
-        movable.position.x += 3;
+        movable.position.x += 5;
       });
     }
   } else if (keys.s.pressed && lastKey === "s") {
@@ -264,7 +265,7 @@ function animate() {
             ...boundary,
             position: {
               x: boundary.position.x,
-              y: boundary.position.y - 3,
+              y: boundary.position.y - 5,
             },
           },
         })
@@ -276,7 +277,7 @@ function animate() {
 
     if (moving) {
       movables.forEach((movable) => {
-        movable.position.y -= 3;
+        movable.position.y -= 5;
       });
     }
   } else if (keys.d.pressed && lastKey === "d") {
@@ -291,7 +292,7 @@ function animate() {
           rectangle2: {
             ...boundary,
             position: {
-              x: boundary.position.x - 3,
+              x: boundary.position.x - 5,
               y: boundary.position.y,
             },
           },
@@ -304,7 +305,7 @@ function animate() {
 
     if (moving) {
       movables.forEach((movable) => {
-        movable.position.x -= 3;
+        movable.position.x -= 5;
       });
     }
   }
