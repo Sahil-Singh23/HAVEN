@@ -69,19 +69,19 @@ canvas.width = 1444;
 canvas.height = 1024;
 const socket = io();
 const collisionsMap = [];
-for (let i = 0; i < collisions.length; i += 64) {
-  collisionsMap.push(collisions.slice(i, 64 + i));
+for (let i = 0; i < collisions.length; i += 66) {
+  collisionsMap.push(collisions.slice(i, 66 + i));
 }
 
 const boundaries = [];
 const offset = {
-  x: -300,
-  y: -1100,
+  x: -55,
+  y: -935,
 };
 
 collisionsMap.forEach((row, i) => {
   row.forEach((symbol, j) => {
-    if (symbol === 14819) {
+    if (symbol === 20943) {
       boundaries.push(
         new Boundary({
           position: {
@@ -94,18 +94,19 @@ collisionsMap.forEach((row, i) => {
   });
 });
 
-// const foregroundImage = new Image()
-// foregroundImage.src = './img/foregroundObjects.png'
+
 const assets = {
   mainMap: new Image(),
   playerDown: new Image(),
   playerUp: new Image(),
   playerLeft: new Image(),
   playerRight: new Image(),
+  foreground: new Image(),
 };
 
 // Updated paths to match your structure
-assets.mainMap.src = "assets/images/mainMap.png";
+assets.foreground.src = "assets/images/foregroundObjects.png";
+assets.mainMap.src = "assets/images/Map.png";
 assets.playerDown.src = "assets/images/playerDown.png";
 assets.playerUp.src = "assets/images/playerUp.png";
 assets.playerLeft.src = "assets/images/playerLeft.png";
@@ -137,13 +138,13 @@ const background = new Sprite({
   image: assets.mainMap,
 });
 
-// const foreground = new Sprite({
-//   position: {
-//     x: offset.x,
-//     y: offset.y
-//   },
-//   image: foregroundImage
-// })
+const foreground = new Sprite({
+  position: {
+    x: offset.x,
+    y: offset.y
+  },
+  image: assets.foreground,
+})
 const collisionDebug = {
   draw: function () {
     boundaries.forEach((boundary) => {
@@ -175,7 +176,7 @@ const keys = {
 const movables = [
   background,
   ...boundaries,
-  //foreground
+  foreground
 ];
 
 const renderables = [
@@ -183,7 +184,7 @@ const renderables = [
   ...boundaries,
   player,
   //collisionDebug,
-  //foreground
+  foreground
 ];
 
 function animate() {
@@ -316,17 +317,17 @@ function animate() {
     const gamePortals = [
         {
             name: 'Memory Card Game',
-            position: { x: -363, y: -113 },
+            position: { x: -280, y: -55 },
             url: 'https://snehasingh-25.github.io/MemoryCardGame/'
         },
         {
             name: 'Tic Tac Toe',
-            position: { x: -552, y: -113 },
+            position: { x: -480, y: -55 },
             url: 'https://snehasingh-25.github.io/Tic-Tac-Toe-/'
         },
         {
             name: 'Solar System',
-            position: { x: 0, y: 240 },
+            position: { x: 25, y: 235 },
             url: 'https://snehasingh-25.github.io/SolarSystem/'
         }
         // Add more games easily here 
@@ -431,5 +432,4 @@ window.addEventListener("keydown", (e) => {
     // Press 'c' to toggle collision visibility
     showCollisions = !showCollisions;
   }
-  // Rest of your existing keydown handler...
 });

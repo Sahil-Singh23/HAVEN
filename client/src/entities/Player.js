@@ -85,20 +85,21 @@ class Sprite {
 }
 
 class Boundary {
-  static width = 59;
-  static height = 59;
+  static width = 16 * 3;  // 51.2
+  static height = 16 * 3;
 
   constructor({ position }) {
     this.position = position;
-    this.width = 59;
-    this.height = 59;
+    this.width = Boundary.width;
+    this.height = Boundary.height;
   }
 
   draw() {
-    c.fillStyle = 'rgba(255, 0, 0, 0)'; // transparent for now
+    c.fillStyle = 'rgba(255, 0, 0, 0)'; // transparent
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 }
+
 
 class Character extends Sprite {
   constructor({
