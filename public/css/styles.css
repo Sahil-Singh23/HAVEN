@@ -1,7 +1,7 @@
-*{
-    margin:0;
-    padding:0;
-    overflow: hidden;
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 #gameMessage {
   position: absolute;
@@ -26,4 +26,11 @@
 
 .show {
   opacity: 1;
+}
+
+.player-username {
+  pointer-events: none;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  z-index: 1000;
 }

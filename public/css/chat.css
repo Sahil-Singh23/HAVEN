@@ -1,0 +1,108 @@
+/* chat.css */
+#chat-container {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(30, 30, 30, 0.8);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+#chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #f0f0f0;
+}
+
+#chat-form {
+  display: flex;
+  width: 100%;
+}
+
+#chat-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+#chat-submit {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+#chat-submit:hover {
+  background-color: #45a049;
+}
+
+.chat-message {
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
+
+.system-message {
+  color: #aaa;
+  font-style: italic;
+}
+
+#player-info {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(30, 30, 30, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  color: #f0f0f0;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.chat-bubble {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1001;
+  max-width: 200px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#toggle-chat {
+  position: absolute;
+  bottom: 230px;
+  left: 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  z-index: 1000;
+}
