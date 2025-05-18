@@ -33,8 +33,8 @@ for (let i = 0; i < collisions.length; i += 66) {
 
 const boundaries = [];
 const offset = {
-  x: -55,
-  y: -935,
+  x: -45,
+  y: -905,
 };
 
 collisionsMap.forEach((row, i) => {

@@ -88,10 +88,46 @@
         border-radius: 5px;
         display: none;
       }
+
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .loader {
+        width: 60px;
+        aspect-ratio: 2;
+        --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
+        background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+        background-size: calc(100% / 3) 50%;
+        animation: l3 1s infinite linear;
+      }
+
+      @keyframes l3 {
+        20% {
+          background-position: 0% 0%, 50% 50%, 100% 50%;
+        }
+        40% {
+          background-position: 0% 100%, 50% 0%, 100% 50%;
+        }
+        60% {
+          background-position: 0% 50%, 50% 100%, 100% 0%;
+        }
+        80% {
+          background-position: 0% 50%, 50% 50%, 100% 100%;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Login Screen -->
     <div class="login-container" id="login-screen">
       <h1>HAVEN</h1>
       <p>Enter your username to join the multiplayer world</p>
@@ -106,18 +142,19 @@
       </form>
     </div>
 
-    <!-- Game Elements -->
+    <div class="loading-screen" id="loading-screen">
+      <div class="loader"></div>
+    </div>
+
     <canvas id="game-canvas"></canvas>
     <div id="gameMessage" class="hidden"></div>
 
-    <!-- Game Scripts -->
     <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script src="../../client/src/game/collisions.js"></script>
     <script src="../../client/src/utils.js"></script>
     <script src="../../client/src/entities/Player.js"></script>
     <script src="../../client/src/game/game.js" defer></script>
 
-    <!-- Login Handling -->
     <script>
       document
         .getElementById("join-form")
@@ -127,15 +164,15 @@
             .getElementById("username-input")
             .value.trim();
           if (username) {
-            // Hide login screen
             document.getElementById("login-screen").style.display = "none";
+            document.getElementById("loading-screen").style.display = "flex";
 
-            // Show canvas and game message
-            document.getElementById("game-canvas").style.display = "block";
-            document.getElementById("gameMessage").style.display = "block";
-
-            // Pass username to game logic (optional global)
-            window.username = username;
+            setTimeout(() => {
+              document.getElementById("loading-screen").style.display = "none";
+              document.getElementById("game-canvas").style.display = "block";
+              document.getElementById("gameMessage").style.display = "block";
+              window.username = username;
+            }, 1000);
           }
         });
     </script>
