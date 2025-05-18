@@ -358,6 +358,33 @@ function animate() {
             key: 'e'
         }
     ];
+    function generatePortalMessage(message, url, name) {
+      const iconMap = {
+          'Gmail': '/assets/images/gmail.png',
+          'Spotify': '/assets/images/spotify.png',
+          'Notion': '/assets/images/notion.png',
+          'Todo': '/assets/images/todo.png',
+          'Calendar': '/assets/images/calendar.png',
+          'GitHub': '/assets/images/github.png',
+          'Slack': '/assets/images/slack.png',
+          'Google Meet': '/assets/images/meet.png',
+          'Google Drive': '/assets/images/drive.png',
+          'Figma': '/assets/images/figma.png',
+          'Excalidraw': '/assets/images/excalidraw.png',
+          'Memory Card Game': '',
+          'Tic Tac Toe': '',
+          'Solar System': ''
+      };
+  
+      const iconUrl = iconMap[name] || '';
+  
+      return `
+          ${iconUrl ? `<a href="${url}" target="_blank" style="margin-right:8px;">
+              <img src="${iconUrl}" alt="${name} icon" style="height:24px; vertical-align:middle;" />
+          </a>` : ''}
+          <span style="vertical-align:middle;">${message}</span>
+      `;
+  }
 
     function checkGamePortalTrigger() {
         let matched = false;
@@ -372,13 +399,17 @@ function animate() {
                     messageVisible = true;
 
                     // Show custom message if available, otherwise show default message
-                    if (portal.customMessage) {
-                        gameMessage.innerText = portal.customMessage;
-                    } else if (portal.key) {
-                        gameMessage.innerText = `Press ${portal.key.toUpperCase()} to open ${portal.name}!`;
-                    } else {
-                        gameMessage.innerText = `Press P to play the ${portal.name}!`;
-                    }
+                    let message = '';
+                if (portal.customMessage) {
+                    message = portal.customMessage;
+                } else if (portal.key) {
+                    message = `Press ${portal.key.toUpperCase()} to open ${portal.name}!`;
+                } else {
+                    message = `Press P to play the ${portal.name}!`;
+                }
+
+                gameMessage.innerHTML = generatePortalMessage(message, portal.url, portal.name);
+
                     
                     gameMessage.classList.remove('hidden');
                     gameMessage.classList.add('show');

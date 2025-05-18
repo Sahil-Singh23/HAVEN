@@ -1,0 +1,43 @@
+#gameMessage {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+#gameMessage.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#gameMessage.show {
+    opacity: 1;
+}
+
+.portal-icon {
+    margin-top: 8px;
+}
+
+.portal-icon img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.portal-icon img:hover {
+    transform: scale(1.1);
+}
+
+.portal-icon a {
+    text-decoration: none;
+    display: inline-block;
+} 
